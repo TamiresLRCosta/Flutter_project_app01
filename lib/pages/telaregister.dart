@@ -19,9 +19,7 @@ class TelaRegister extends StatelessWidget {
         padding: EdgeInsets.only(top: 15, left: 30, right: 30, bottom: 15),
         child: ListView(
           children: [
-            Padding(
-                padding:
-                    EdgeInsets.only(top: 15, left: 30, right: 30, bottom: 15)),
+            Padding(padding: EdgeInsets.only(top: 15, left: 30, right: 30, bottom: 15)),
             Icon(
               Icons.person_add,
               size: 150,

@@ -9,16 +9,13 @@ class TelaInicial extends StatelessWidget {
     return Scaffold(
       body: Container(
         color: Colors.blueGrey[900],
-        padding: EdgeInsets.only(
-          top: 60,
-          left: 40,
-          right: 40,
-        ),
+        padding: EdgeInsets.all(10),
         child: ListView(
+          physics: const NeverScrollableScrollPhysics(),
           children: [
             //logo
-            SizedBox(
-              width: 500,
+            SizedBox(              
+              width: double.infinity,
               height: 300,
               child: Image.asset('lib/Imagens/logo.png'),
             ),
@@ -33,28 +30,27 @@ class TelaInicial extends StatelessWidget {
                   'Entrar'.toUpperCase(),
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.w700,
                       fontSize: 20,
-                      color: Colors.white),
+                      color: Colors.blueGrey[900]
+                  ),
                 ),
                 onPressed: () {
                   Navigator.push(context,
                     MaterialPageRoute(builder: (context) => TelaLogin()));
                 },
                 style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all(Colors.blueGrey[800]),
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(18.0),
-                      side: BorderSide(color: Colors.white54),
-                    ))),
+                  shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0))
+                  )
+                ),
               ),
             ),
             SizedBox(height: 30),
             //button criar conta
             SizedBox(
-              width: 1,
-              height: 18,
+              width: 50,
+              height: 50,
               child: TextButton(
                 onPressed: () {
                   Navigator.push(context,
@@ -63,9 +59,10 @@ class TelaInicial extends StatelessWidget {
                 child: Text(
                   'Primeiro Acesso',
                   textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 15),
                 ),
-                style: ButtonStyle(
-                    foregroundColor: MaterialStateProperty.all(Colors.white)),
+                style: ButtonStyle(                  
+                    foregroundColor: MaterialStateProperty.all(Colors.white70)),
               ),
             ),
           ],
@@ -73,20 +70,18 @@ class TelaInicial extends StatelessWidget {
       ),
       bottomNavigationBar: BottomAppBar(
         color: Colors.blueGrey[700],
-        child: Container(
-          child: SizedBox(
-            width: 20,
-            height: 30,
-            child: TextButton.icon(
-              onPressed: () {
-                Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => TelaInfo()));
-              },
-              icon: Icon(Icons.info),
-              label: Text('Sobre nós'),
-              style: ButtonStyle(
-                foregroundColor: MaterialStateProperty.all(Colors.amber[400])
-              ),
+        child: SizedBox(          
+          width: 20,
+          height: 30,
+          child: TextButton.icon(
+            onPressed: () {
+              Navigator.push(context,
+                MaterialPageRoute(builder: (context) => TelaInfo()));
+            },
+            icon: Icon(Icons.info),
+            label: Text('Sobre nós'),
+            style: ButtonStyle(
+              foregroundColor: MaterialStateProperty.all(Colors.amber[400])
             ),
           ),
         )

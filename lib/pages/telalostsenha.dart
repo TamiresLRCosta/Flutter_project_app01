@@ -11,12 +11,11 @@ class TelaLostSenha extends StatelessWidget {
 
       body: Container(
         color: Colors.blueGrey[900],
-        padding: EdgeInsets.only(top: 15, left: 30, right: 30, bottom: 15),
         child: ListView(
-          padding: EdgeInsets.only(top: 70, left: 30, right: 30, bottom: 15),
+          physics: const NeverScrollableScrollPhysics(),
+          padding: EdgeInsets.only(top: 70, left: 10, right: 10, bottom: 15),
           children: [
-            Icon(Icons.password, size: 70, color: Colors.white70),
-
+            Icon(Icons.password, size: 50, color: Colors.white70),
             SizedBox(height: 20),
             Text('Preencha os campos abaixo para\nrecuperar sua senha',
               textAlign: TextAlign.center,
@@ -24,7 +23,7 @@ class TelaLostSenha extends StatelessWidget {
             ),
 
             //campo 'CPF'
-            SizedBox(height: 20),
+            SizedBox(height: 40),
             TextFormField(
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
@@ -38,6 +37,7 @@ class TelaLostSenha extends StatelessWidget {
             ),
 
             //campo 'Data de nascimento'
+            SizedBox(height: 10),
             TextFormField(
               keyboardType: TextInputType.datetime,
               decoration: InputDecoration(
@@ -51,7 +51,7 @@ class TelaLostSenha extends StatelessWidget {
             ),
 
             //btn 'Enviar"
-            SizedBox(height: 100),
+            SizedBox(height: 90),
             SizedBox(
               width: 50,
               height: 60,
@@ -60,18 +60,16 @@ class TelaLostSenha extends StatelessWidget {
                   'Enviar'.toUpperCase(),
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.w700,
                       fontSize: 20,
-                      color: Colors.white),
+                      color: Colors.blueGrey[900]),
                 ),
                 onPressed: () {},
                 style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all(Colors.blueGrey[800]),
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(18.0),
-                      side: BorderSide(color: Colors.white54),
-                    ))),
+                  shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0))
+                  )
+                ),
               ),
             ),
 

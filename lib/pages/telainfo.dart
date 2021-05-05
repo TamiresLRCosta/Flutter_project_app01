@@ -10,8 +10,10 @@ class TelaInfo extends StatelessWidget {
       ),
       body: Container(
         color: Colors.blueGrey[900],
-        padding: EdgeInsets.only(top: 15, left: 30, right: 30, bottom: 15),
+        padding: EdgeInsets.all(10),
+        //padding: EdgeInsets.only(top: 15, left: 30, right: 30, bottom: 15),
         child: ListView(
+          physics: const NeverScrollableScrollPhysics(),
           children: [
             Padding(
               padding: EdgeInsets.only(
@@ -20,12 +22,13 @@ class TelaInfo extends StatelessWidget {
             ),
             //icone
             Icon(Icons.lightbulb_outline_rounded,
-              size: 150, 
+              //size: 150,
+              size: 120, 
               color: Colors.white70
             ),
 
             //Texto 'about us'
-            SizedBox(height: 50),
+            SizedBox(height: 20),
             Container(
               margin: EdgeInsets.all(15.0),
               padding:  EdgeInsets.all(20.0),
@@ -46,7 +49,7 @@ class TelaInfo extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [                
                 Icon(Icons.call, size: 20),
-                Text('     (16) 99999-9999'),
+                Text('  (16) 99999-9999'),
               ],
             ),
             
@@ -56,7 +59,7 @@ class TelaInfo extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [                
                 Icon(Icons.email, size: 20),
-                Text('     empresa.loja@empresa.com'),
+                Text('  empresa.loja@empresa.com'),
               ],
             ),
 
@@ -66,7 +69,7 @@ class TelaInfo extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [                
                 Icon(Icons.home, size: 20),
-                Text('     Rua Nova York, 1300 - Centro / Ribeirão Preto'),
+                Text('  Rua Nova York, 1300 - Centro / Ribeirão Preto'),
               ],
             ),
           ],          

@@ -13,19 +13,17 @@ class TelaLogin extends StatelessWidget {
       ),
       body: Container(
         color: Colors.blueGrey[900],                
-        padding: EdgeInsets.only(top: 15, left: 30, right: 30, bottom: 15),
+        padding: EdgeInsets.all(10),
         child: ListView(
+          physics: const NeverScrollableScrollPhysics(),
           children: [
-            Padding(padding: EdgeInsets.only(top: 15, left: 30, right: 30, bottom: 15)),
-            Icon(Icons.account_circle_sharp, size: 150, color: Colors.white70),
+            Padding(padding: EdgeInsets.only(left: 30, right: 30)),
+            Icon(Icons.account_circle, size: 150, color: Colors.white70),
             SizedBox(height: 60,),
             //campo CPF
             TextFormField(
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(           
-                //focusedBorder: OutlineInputBorder(
-                //  borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                //  borderSide: BorderSide(color: Colors.white70)),
+              decoration: InputDecoration(
                 labelText: 'CPF',
                 labelStyle: TextStyle(
                   color: Colors.white70,
@@ -41,10 +39,7 @@ class TelaLogin extends StatelessWidget {
             TextFormField(
               keyboardType: TextInputType.text,
               obscureText: true,
-              decoration: InputDecoration( 
-                //focusedBorder: OutlineInputBorder(
-                  //borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                  //borderSide: BorderSide(color: Colors.white70)),
+              decoration: InputDecoration(
                 labelText: 'Senha',
                 labelStyle: TextStyle(
                   color: Colors.white70,
@@ -55,13 +50,15 @@ class TelaLogin extends StatelessWidget {
               style: TextStyle(fontSize: 20),
             ),
             SizedBox(height: 10),
+
             //btn 'esqueci minha senha'
             TextButton(onPressed: () {
               Navigator.push(context,
                 MaterialPageRoute(builder: (context) => TelaLostSenha()));
             }, 
-              child: Text('Esqueci minha senha', style: TextStyle(color: Colors.white70),),              
+              child: Text('Esqueci minha senha', style: TextStyle(color: Colors.white70, fontSize: 15),),              
             ),
+            
             //btn Entrar
             SizedBox(height: 30),
             SizedBox(
@@ -72,21 +69,19 @@ class TelaLogin extends StatelessWidget {
                   'Entrar'.toUpperCase(),
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.w700,
                       fontSize: 20,
-                      color: Colors.white),
+                      color: Colors.blueGrey[900]),
                 ),
                 onPressed: () {
                   Navigator.push(context,
                     MaterialPageRoute(builder: (context) => TelaLogin()));
                 },
                 style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all(Colors.blueGrey[800]),
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(18.0),
-                      side: BorderSide(color: Colors.white54),
-                    ))),
+                  shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0))
+                  )
+                ),
               ),
             ),
           ],

@@ -16,13 +16,15 @@ class TelaRegister extends StatelessWidget {
       ),
       body: Container(
         color: Colors.blueGrey[900],
-        padding: EdgeInsets.only(top: 15, left: 30, right: 30, bottom: 15),
+        //padding: EdgeInsets.only(top: 15, left: 30, right: 30, bottom: 15),
+        padding: EdgeInsets.all(10),
         child: ListView(
+          physics: const NeverScrollableScrollPhysics(),
           children: [
-            Padding(padding: EdgeInsets.only(top: 15, left: 30, right: 30, bottom: 15)),
+            Padding(padding: EdgeInsets.only(left: 30, right: 30, bottom: 15)),
             Icon(
-              Icons.person_add,
-              size: 150,
+              Icons.person_add_alt_1_rounded,
+              size: 120,
               color: Colors.white70,
             ),
 
@@ -95,18 +97,16 @@ class TelaRegister extends StatelessWidget {
                   'Enviar'.toUpperCase(),
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.w700,
                       fontSize: 20,
-                      color: Colors.white),
+                      color: Colors.blueGrey[900]),
                 ),
                 onPressed: () {},
                 style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all(Colors.blueGrey[800]),
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(18.0),
-                      side: BorderSide(color: Colors.white54),
-                    ))),
+                  shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0))
+                  )
+                ),
               ),
             ),
           ],

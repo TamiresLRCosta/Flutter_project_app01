@@ -5,12 +5,12 @@ class Menu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+        color: Colors.blueGrey[900],
         child: Column(
           children: [
             //LOGO DO APP
             Container(
-              margin: EdgeInsets.all(20),
+              margin: EdgeInsets.all(30),
               height: MediaQuery.of(context).size.height * 0.1,
               child: Center(
                 child: Image.asset("lib/Imagens/logo.png"),

@@ -8,45 +8,28 @@ class TelaLostSenha extends StatelessWidget {
       appBar: AppBar(title: ConfigAppBar("Esqueci minha senha")),
       body: Container(
         color: Colors.blueGrey[900],
-        padding: EdgeInsets.only(top: 15, left: 30, right: 30, bottom: 15),
+        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
         child: ListView(
-          padding: EdgeInsets.only(top: 70, left: 30, right: 30, bottom: 15),
           children: [
-            Icon(Icons.password, size: 70, color: Colors.white70),
+            Container(
+              margin: EdgeInsets.all(30),
+              child: Icon(Icons.password, size: 70, color: Colors.white70),
+            ),
 
-            SizedBox(height: 20),
-            Text(
-              'Preencha os campos abaixo para\nrecuperar sua senha',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w200),
+            Container(
+              margin: EdgeInsets.only(bottom: 40),
+              child: Text(
+                'Preencha os campos abaixo para\nrecuperar sua senha',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w200),
+              ),
             ),
 
             //campo 'CPF'
-            SizedBox(height: 20),
-            TextFormField(
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: 'CPF',
-                labelStyle: TextStyle(
-                  color: Colors.white70,
-                  fontWeight: FontWeight.w200,
-                  fontSize: 20,
-                ),
-              ),
-            ),
+            _Campo('CPF', TextInputType.number),
 
             //campo 'Data de nascimento'
-            TextFormField(
-              keyboardType: TextInputType.datetime,
-              decoration: InputDecoration(
-                labelText: 'Data de nascimento',
-                labelStyle: TextStyle(
-                  color: Colors.white70,
-                  fontWeight: FontWeight.w200,
-                  fontSize: 20,
-                ),
-              ),
-            ),
+            _Campo('Data de Nascimento', TextInputType.datetime),
 
             //btn 'Enviar"
             SizedBox(height: 100),
@@ -59,10 +42,54 @@ class TelaLostSenha extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(context).textTheme.headline4,
                 ),
-                onPressed: () {},
+                onPressed: () async {
+                  await showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: Text(
+                          "Nova senha enviada para o \ne-mail cadastrado.",
+                          textAlign: TextAlign.center,
+                        ),
+                        content: ElevatedButton(
+                          onPressed: () {
+                            Navigator.popAndPushNamed(context, '/inicial');
+                          },
+                          child: Text(
+                            "Ok",
+                            style: TextStyle(fontSize: 20),
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                },
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class _Campo extends StatelessWidget {
+  final String label;
+  final TextInputType teclado;
+
+  const _Campo(this.label, this.teclado);
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: TextFormField(
+        keyboardType: teclado,
+        decoration: InputDecoration(
+          labelText: label,
+          labelStyle: TextStyle(
+            color: Colors.white70,
+            fontWeight: FontWeight.w200,
+            fontSize: 20,
+          ),
         ),
       ),
     );

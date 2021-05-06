@@ -45,9 +45,28 @@ class TelaRegister extends StatelessWidget {
               width: 50,
               height: 60,
               child: ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/inicial');
+                onPressed: () async {
+                  await showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: Text("Cadastro Realizado com Sucesso!"),
+                        content: ElevatedButton(
+                          onPressed: () {
+                            Navigator.popAndPushNamed(context, '/inicial');
+                          },
+                          child: Text(
+                            "Ok",
+                            style: TextStyle(fontSize: 20),
+                          ),
+                        ),
+                      );
+                    },
+                  );
                 },
+                // onPressed: () {
+                //   Navigator.pushNamed(context, '/inicial');
+                // },
                 child: Text(
                   "Enviar".toUpperCase(),
                   style: TextStyle(fontSize: 25),

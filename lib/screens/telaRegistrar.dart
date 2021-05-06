@@ -58,6 +58,7 @@ class TelaRegister extends StatelessWidget {
                           child: Text(
                             "Ok",
                             style: TextStyle(fontSize: 20),
+                            textAlign: TextAlign.center,
                           ),
                         ),
                       );

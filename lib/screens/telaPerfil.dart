@@ -7,9 +7,9 @@ class TelaPerfil extends StatelessWidget {
   final TextEditingController controladorCampoCPF = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    controladorCampoNome.text = "Matheus Fernando Duarte de Souza";
-    controladorCampoCel.text = "(16) 98814-4694";
-    controladorCampoEmail.text = "matheus.souza107@fatec.sp.gov.br";
+    controladorCampoNome.text = "Nome do Usuário";
+    controladorCampoCel.text = "(99) 99999-9999";
+    controladorCampoEmail.text = "email_do_usuario@email.com";
     controladorCampoCPF.text = "123.456.789-0";
     return Scaffold(
       backgroundColor: Colors.blueGrey[900],

@@ -75,6 +75,7 @@ class _AlterarSenhaState extends State<AlterarSenha> {
                           child: Text(
                             "Ok",
                             style: TextStyle(fontSize: 20),
+                            textAlign: TextAlign.center,
                           ),
                         ),
                       );

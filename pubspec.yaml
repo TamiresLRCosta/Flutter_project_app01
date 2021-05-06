@@ -21,6 +21,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  url_launcher: ^5.7.10
   carousel_slider: ^3.0.0
   flutter:
     sdk: flutter
@@ -47,14 +48,14 @@ flutter:
   assets:
     - lib/Imagens/
 
-  fonts:
+  # fonts:
 
-    - family: Roboto
-      fonts:
-        - asset: lib/myFonts/Roboto-Regular.ttf
-        - asset: lib/myFonts/Roboto-Bold.ttf
-        - asset: lib/myFonts/Roboto-light.ttf
-          weight: 700
+  #   - family: Roboto
+  #     fonts:
+  #       - asset: lib/myFonts/Roboto-Regular.ttf
+  #       - asset: lib/myFonts/Roboto-Bold.ttf
+  #       - asset: lib/myFonts/Roboto-light.ttf
+  #         weight: 700
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

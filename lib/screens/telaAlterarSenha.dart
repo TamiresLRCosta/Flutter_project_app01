@@ -1,5 +1,6 @@
+import 'package:app_mf_tc/components/CampoSenha.dart';
+import 'package:app_mf_tc/components/ConfigAppBar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class AlterarSenha extends StatefulWidget {
   @override
@@ -23,12 +24,7 @@ class _AlterarSenhaState extends State<AlterarSenha> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blueGrey[900],
-      appBar: AppBar(
-        title: Text(
-          "Alterar Senha",
-          style: Theme.of(context).textTheme.headline3,
-        ),
-      ),
+      appBar: AppBar(title: ConfigAppBar("Alterar Senha")),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -87,48 +83,11 @@ class _AlterarSenhaState extends State<AlterarSenha> {
                 },
                 child: Text(
                   "Confirmar Alteração",
-                  style: TextStyle(fontSize: 25),
+                  style: Theme.of(context).textTheme.headline4,
                 ),
               ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class CampoSenha extends StatefulWidget {
-  final String labelText;
-  final TextEditingController controlador;
-  const CampoSenha({Key key, this.labelText, this.controlador})
-      : super(key: key);
-
-  @override
-  _CampoSenhaState createState() => _CampoSenhaState();
-}
-
-class _CampoSenhaState extends State<CampoSenha> {
-  bool senhaVisivel = true;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      child: TextFormField(
-        keyboardType: TextInputType.text,
-        controller: widget.controlador,
-        obscureText: senhaVisivel,
-        decoration: InputDecoration(
-          labelText: widget.labelText,
-          labelStyle: TextStyle(fontSize: 20, color: Colors.blueGrey[300]),
-          suffixIcon: IconButton(
-            icon: Icon(senhaVisivel ? Icons.visibility : Icons.visibility_off),
-            onPressed: () {
-              setState(() {
-                senhaVisivel = !senhaVisivel;
-              });
-            },
-          ),
         ),
       ),
     );

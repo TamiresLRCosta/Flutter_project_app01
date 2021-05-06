@@ -1,14 +1,11 @@
+import 'package:app_mf_tc/components/ConfigAppBar.dart';
 import 'package:flutter/material.dart';
 
 class TelaLostSenha extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Esqueci Minha Senha'),
-        backgroundColor: Colors.blueGrey[800],        
-      ),
-
+      appBar: AppBar(title: ConfigAppBar("Esqueci minha senha")),
       body: Container(
         color: Colors.blueGrey[900],
         padding: EdgeInsets.only(top: 15, left: 30, right: 30, bottom: 15),
@@ -18,9 +15,10 @@ class TelaLostSenha extends StatelessWidget {
             Icon(Icons.password, size: 70, color: Colors.white70),
 
             SizedBox(height: 20),
-            Text('Preencha os campos abaixo para\nrecuperar sua senha',
+            Text(
+              'Preencha os campos abaixo para\nrecuperar sua senha',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w200),        
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w200),
             ),
 
             //campo 'CPF'
@@ -59,23 +57,11 @@ class TelaLostSenha extends StatelessWidget {
                 child: Text(
                   'Enviar'.toUpperCase(),
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 20,
-                      color: Colors.white),
+                  style: Theme.of(context).textTheme.headline4,
                 ),
                 onPressed: () {},
-                style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all(Colors.blueGrey[800]),
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(18.0),
-                      side: BorderSide(color: Colors.white54),
-                    ))),
               ),
             ),
-
-
           ],
         ),
       ),

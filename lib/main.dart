@@ -1,11 +1,13 @@
-import 'package:app_mf_tc/pages/telasMatheus/telaAlterarSenha.dart';
-import 'package:app_mf_tc/pages/telasMatheus/telaMinhaFatura.dart';
-import 'package:app_mf_tc/pages/telasMatheus/telaPerfil.dart';
-import 'package:app_mf_tc/pages/telasTamires/telainfo.dart';
-import 'package:app_mf_tc/pages/telasTamires/telainicial.dart';
-import 'package:app_mf_tc/pages/telasTamires/telalogin.dart';
+import 'package:app_mf_tc/screens/telaAlterarSenha.dart';
+import 'package:app_mf_tc/screens/telaMinhaFatura.dart';
+import 'package:app_mf_tc/screens/telaPerfil.dart';
+import 'package:app_mf_tc/screens/telaInfo.dart';
+import 'package:app_mf_tc/screens/telaInicial.dart';
+import 'package:app_mf_tc/screens/telaLogin.dart';
+import 'package:app_mf_tc/screens/telaRecuperarSenha.dart';
+import 'package:app_mf_tc/screens/telaRegistrar.dart';
 import 'package:flutter/material.dart';
-import 'package:app_mf_tc/pages/telasMatheus/telaPrincipal.dart';
+import 'package:app_mf_tc/screens/telaPrincipal.dart';
 
 void main() => runApp(
       MaterialApp(
@@ -16,6 +18,17 @@ void main() => runApp(
           accentColor: Colors.amber,
           primaryColor: Colors.blueGrey[700],
           brightness: Brightness.dark,
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ButtonStyle(
+              // backgroundColor:
+              shape: MaterialStateProperty.all(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  side: BorderSide(color: Colors.amber),
+                ),
+              ),
+            ),
+          ),
           //fontFamily: 'Roboto',
           textTheme: TextTheme(
             headline1: TextStyle(
@@ -29,13 +42,19 @@ void main() => runApp(
             ),
             //USADO NO TITULO DO APP BAR
             headline3: TextStyle(
-              fontSize: 25,
+              fontSize: 22,
               color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
+            //USADO NOS BOTÕES
+            headline4: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 25,
+              color: Colors.blueGrey[900],
+            ),
           ),
         ),
-        initialRoute: '/principal',
+        initialRoute: '/inicial',
         routes: {
           '/principal': (context) => TelaPrincipal(),
           '/perfil': (context) => TelaPerfil(),
@@ -44,6 +63,8 @@ void main() => runApp(
           '/alterarSenha': (context) => AlterarSenha(),
           '/inicial': (context) => TelaInicial(),
           '/minhaFatura': (context) => TelaMinhaFatura(),
+          '/recuperarSenha': (context) => TelaLostSenha(),
+          '/registrar': (context) => TelaRegister(),
         },
       ),
     );

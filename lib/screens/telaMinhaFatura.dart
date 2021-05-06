@@ -9,23 +9,10 @@ class _TelaMinhaFaturaState extends State<TelaMinhaFatura> {
   final List<ItemFatura> lista = [];
 
   ItemFatura giga = ItemFatura('29/08/2020', 'Giga (8/10)', r'R$ 19,69');
-  ItemFatura mlar = ItemFatura(
-      '25/08/2020', 'Maravilhas Do Lar NOME GRANDE (7/10)', r'R$ 14,90');
+  ItemFatura mlar = ItemFatura('25/08/2020', 'Maravilhas Do Lar NOME GRANDE (7/10)', r'R$ 14,90');
   ItemFatura ppag = ItemFatura('28/08/2020', 'PINPAG', r'R$ 52,75');
   @override
   void initState() {
-    lista.add(giga);
-    lista.add(mlar);
-    lista.add(ppag);
-    lista.add(giga);
-    lista.add(mlar);
-    lista.add(ppag);
-    lista.add(giga);
-    lista.add(mlar);
-    lista.add(ppag);
-    lista.add(giga);
-    lista.add(mlar);
-    lista.add(ppag);
     lista.add(giga);
     lista.add(mlar);
     lista.add(ppag);
@@ -96,7 +83,7 @@ class _TelaMinhaFaturaState extends State<TelaMinhaFatura> {
                 itemCount: lista.length,
                 itemBuilder: (context, index) {
                   final _item = lista[index];
-                  return ItemFaturaFim(_item);
+                  return ListTileFatura(_item);
                 },
               ),
             ),
@@ -115,10 +102,10 @@ class ItemFatura {
   ItemFatura(this.data, this.desc, this.valor);
 }
 
-class ItemFaturaFim extends StatelessWidget {
+class ListTileFatura extends StatelessWidget {
   final ItemFatura _item;
 
-  const ItemFaturaFim(this._item);
+  const ListTileFatura(this._item);
   @override
   Widget build(BuildContext context) {
     return Card(

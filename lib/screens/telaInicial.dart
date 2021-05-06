@@ -1,7 +1,4 @@
-import 'package:app_mf_tc/pages/telasTamires/telainfo.dart';
-import 'package:app_mf_tc/pages/telasTamires/telaregister.dart';
 import 'package:flutter/material.dart';
-import 'package:app_mf_tc/pages/telasTamires/telalogin.dart';
 
 class TelaInicial extends StatelessWidget {
   @override
@@ -24,31 +21,18 @@ class TelaInicial extends StatelessWidget {
               child: Image.asset('lib/Imagens/logo.png'),
             ),
             //space between
-            SizedBox(height: 120),
+            SizedBox(height: 40),
             //button entrar
             SizedBox(
               width: 50,
               height: 60,
               child: ElevatedButton(
-                child: Text(
-                  'Entrar'.toUpperCase(),
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 20,
-                      color: Colors.white),
-                ),
+                child: Text('Entrar'.toUpperCase(),
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.headline4),
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => TelaLogin()));
+                  Navigator.pushNamed(context, '/login');
                 },
-                style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all(Colors.blueGrey[800]),
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(18.0),
-                      side: BorderSide(color: Colors.white54),
-                    ))),
               ),
             ),
             SizedBox(height: 30),
@@ -58,8 +42,7 @@ class TelaInicial extends StatelessWidget {
               height: 50,
               child: TextButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => TelaRegister()));
+                  Navigator.pushNamed(context, '/registrar');
                 },
                 child: Text(
                   'Primeiro Acesso',
@@ -80,8 +63,7 @@ class TelaInicial extends StatelessWidget {
               height: 30,
               child: TextButton.icon(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => TelaInfo()));
+                  Navigator.pushNamed(context, '/sobre');
                 },
                 icon: Icon(Icons.info),
                 label: Text('Sobre nós'),

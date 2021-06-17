@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 class CampoSenha extends StatefulWidget {
   final String labelText;
   final TextEditingController controlador;
-  const CampoSenha({Key key, this.labelText, this.controlador})
-      : super(key: key);
+  const CampoSenha({required this.labelText, required this.controlador});
 
   @override
   _CampoSenhaState createState() => _CampoSenhaState();

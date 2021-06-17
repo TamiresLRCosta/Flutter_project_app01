@@ -1,5 +1,6 @@
 import 'package:app_mf_tc/components/CampoSenha.dart';
 import 'package:app_mf_tc/components/ConfigAppBar.dart';
+import 'package:app_mf_tc/components/dialogOk.dart';
 import 'package:flutter/material.dart';
 
 class AlterarSenha extends StatefulWidget {
@@ -8,7 +9,7 @@ class AlterarSenha extends StatefulWidget {
 }
 
 class _AlterarSenhaState extends State<AlterarSenha> {
-  bool senhaVisivel;
+  bool senhaVisivel = false;
   final TextEditingController controladorCampoSenhaAtual =
       TextEditingController();
   final TextEditingController controladorCampoNovaSenha =
@@ -66,19 +67,9 @@ class _AlterarSenhaState extends State<AlterarSenha> {
                   await showDialog(
                     context: context,
                     builder: (context) {
-                      return AlertDialog(
-                        title: Text("Senha Alterada com sucesso!"),
-                        content: ElevatedButton(
-                          onPressed: () {
-                            Navigator.popAndPushNamed(context, '/principal');
-                          },
-                          child: Text(
-                            "Ok",
-                            style: TextStyle(fontSize: 20),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      );
+                      return DialogOk(
+                          texto: "Senha Alterada com sucesso!",
+                          rota: '/principal');
                     },
                   );
                 },

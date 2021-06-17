@@ -1,11 +1,41 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
-class CardPrincipal extends StatelessWidget {
+class CardPrincipal extends StatefulWidget {
+  @override
+  _CardPrincipalState createState() => _CardPrincipalState();
+}
+
+class _CardPrincipalState extends State<CardPrincipal> {
+  // User? user = FirebaseAuth.instance.currentUser;
+  // var valorParcial;
+  // var limite;
+  // var f = NumberFormat("####.00", "pt_BR");
+
+  // void getDocumentById(String id) async {
+  //   await FirebaseFirestore.instance
+  //       .collection('usuarios')
+  //       .doc(id)
+  //       .get()
+  //       .then((valor) {
+  //     valorParcial = valor.get('valorParcial');
+  //     limite = valor.get('limite');
+  //   });
+  // }
+
   @override
   Widget build(BuildContext context) {
+    //getDocumentById(user!.uid.toString());
+
     return Container(
       margin: EdgeInsets.all(15),
       width: double.infinity,
+      decoration: BoxDecoration(
+        color: Colors.amber[600],
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: Row(
         children: [
           Container(
@@ -56,10 +86,6 @@ class CardPrincipal extends StatelessWidget {
           ),
         ],
       ),
-      decoration: BoxDecoration(
-        color: Colors.amber[600],
-        borderRadius: BorderRadius.circular(10),
-      ),
     );
   }
 }
@@ -79,3 +105,8 @@ class _TextoAdaptavel extends StatelessWidget {
     );
   }
 }
+
+/*
+  
+*/
+

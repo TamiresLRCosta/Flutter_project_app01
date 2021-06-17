@@ -11,16 +11,6 @@ class TelaPrincipal extends StatefulWidget {
 }
 
 class _TelaPrincipalState extends State<TelaPrincipal> {
-  var lista = [];
-
-  @override
-  void initState() {
-    lista.add("lib/Imagens/bermudaAdidas.png");
-    lista.add("lib/Imagens/camisaAdidas.png");
-    lista.add("lib/Imagens/chineloAdidas.png");
-    super.initState();
-  }
-
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blueGrey[900],
@@ -31,11 +21,10 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
           children: [
             CardPrincipal(),
             BannerSite(),
-            CarrosselPromo(lista),
+            CarrosselPromo(),
           ],
         ),
       ),
     );
   }
 }
-

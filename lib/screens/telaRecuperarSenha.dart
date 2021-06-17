@@ -1,4 +1,5 @@
 import 'package:app_mf_tc/components/ConfigAppBar.dart';
+import 'package:app_mf_tc/components/dialogOk.dart';
 import 'package:flutter/material.dart';
 
 class TelaLostSenha extends StatelessWidget {
@@ -46,20 +47,9 @@ class TelaLostSenha extends StatelessWidget {
                   await showDialog(
                     context: context,
                     builder: (context) {
-                      return AlertDialog(
-                        title: Text(
-                          "Nova senha enviada para o \ne-mail cadastrado.",
-                          textAlign: TextAlign.center,
-                        ),
-                        content: ElevatedButton(
-                          onPressed: () {
-                            Navigator.popAndPushNamed(context, '/inicial');
-                          },
-                          child: Text(
-                            "Ok",
-                            style: TextStyle(fontSize: 20),
-                          ),
-                        ),
+                      return DialogOk(
+                        texto: "Nova senha enviada para o e-mail cadastrado.",
+                        rota: '/login',
                       );
                     },
                   );

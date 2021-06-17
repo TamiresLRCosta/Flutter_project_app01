@@ -1,3 +1,6 @@
+import 'package:app_mf_tc/model/ItemFatura.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class TelaMinhaFatura extends StatefulWidget {
@@ -6,33 +9,18 @@ class TelaMinhaFatura extends StatefulWidget {
 }
 
 class _TelaMinhaFaturaState extends State<TelaMinhaFatura> {
-  final List<ItemFatura> lista = [];
+  late CollectionReference itemFatura;
+  User? user = FirebaseAuth.instance.currentUser;
 
-  ItemFatura giga = ItemFatura('29/08/2020', 'Giga (8/10)', r'R$ 19,69');
-  ItemFatura mlar = ItemFatura(
-      '25/08/2020', 'Maravilhas Do Lar NOME GRANDE (7/10)', r'R$ 14,90');
-  ItemFatura ppag = ItemFatura('28/08/2020', 'PINPAG', r'R$ 52,75');
   @override
   void initState() {
-    lista.add(giga);
-    lista.add(mlar);
-    lista.add(ppag);
-    lista.add(giga);
-    lista.add(mlar);
-    lista.add(ppag);
-    lista.add(giga);
-    lista.add(mlar);
-    lista.add(ppag);
-    lista.add(giga);
-    lista.add(mlar);
-    lista.add(ppag);
-    lista.add(giga);
-    lista.add(mlar);
-    lista.add(ppag);
-    lista.add(giga);
-    lista.add(mlar);
-    lista.add(ppag);
     super.initState();
+    if (user != null) {
+      itemFatura = FirebaseFirestore.instance
+          .collection('usuarios')
+          .doc(user!.uid)
+          .collection('itemFatura');
+    }
   }
 
   Widget build(BuildContext context) {
@@ -91,12 +79,28 @@ class _TelaMinhaFaturaState extends State<TelaMinhaFatura> {
           ),
           Expanded(
             child: Container(
-              margin: EdgeInsets.symmetric(vertical: 30),
-              child: ListView.builder(
-                itemCount: lista.length,
-                itemBuilder: (context, index) {
-                  final _item = lista[index];
-                  return ListTileFatura(_item);
+              child: StreamBuilder<QuerySnapshot>(
+                //Data Source
+                stream: itemFatura.snapshots(),
+                builder: (context, snapshot) {
+                  switch (snapshot.connectionState) {
+                    case ConnectionState.none:
+                      return Center(
+                          child: Text('Erro ao conectar ao Firestore'));
+
+                    case ConnectionState.waiting:
+                      return Center(child: CircularProgressIndicator());
+
+                    default:
+                      final dados = snapshot.requireData;
+
+                      return ListView.builder(
+                        itemCount: dados.size,
+                        itemBuilder: (context, index) {
+                          return exibirDocumento(dados.docs[index]);
+                        },
+                      );
+                  }
                 },
               ),
             ),
@@ -105,28 +109,19 @@ class _TelaMinhaFaturaState extends State<TelaMinhaFatura> {
       ),
     );
   }
-}
 
-class ItemFatura {
-  final String data;
-  final String desc;
-  final String valor;
+  Widget exibirDocumento(item) {
+    ItemFatura itemFatura = ItemFatura.fromJson(item.data(), item.id);
 
-  ItemFatura(this.data, this.desc, this.valor);
-}
-
-class ListTileFatura extends StatelessWidget {
-  final ItemFatura _item;
-
-  const ListTileFatura(this._item);
-  @override
-  Widget build(BuildContext context) {
     return Card(
       color: Colors.blueGrey[800],
       child: ListTile(
-        leading: Text(_item.data),
-        title: Text(_item.desc),
-        trailing: Text(_item.valor),
+        leading: Text(itemFatura.data),
+        title: Text(itemFatura.desc),
+        trailing: Text("R\$ ${itemFatura.valor}"),
+        onTap: () {
+          Navigator.pushNamed(context, '/itemFatura', arguments: itemFatura.id);
+        },
       ),
     );
   }
@@ -136,7 +131,7 @@ class Data extends StatelessWidget {
   final String dataText;
   final String labelText;
 
-  const Data({Key key, this.dataText, this.labelText}) : super(key: key);
+  const Data({required this.dataText, required this.labelText});
 
   @override
   Widget build(BuildContext context) {

@@ -1,16 +1,37 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class TelaPerfil extends StatelessWidget {
+class TelaPerfil extends StatefulWidget {
+  @override
+  _TelaPerfilState createState() => _TelaPerfilState();
+}
+
+class _TelaPerfilState extends State<TelaPerfil> {
   final TextEditingController controladorCampoNome = TextEditingController();
   final TextEditingController controladorCampoCel = TextEditingController();
   final TextEditingController controladorCampoEmail = TextEditingController();
   final TextEditingController controladorCampoCPF = TextEditingController();
+  User? user = FirebaseAuth.instance.currentUser;
+
+  void getDocumentById(String id) async {
+    await FirebaseFirestore.instance
+        .collection('usuarios')
+        .doc(id)
+        .get()
+        .then((valor) {
+      controladorCampoNome.text = valor.get('nome');
+      controladorCampoCel.text = valor.get('celular');
+      controladorCampoCPF.text = valor.get('cpf');
+      controladorCampoEmail.text = valor.get('email');
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    controladorCampoNome.text = "Nome do Usuário";
-    controladorCampoCel.text = "(99) 99999-9999";
-    controladorCampoEmail.text = "email_do_usuario@email.com";
-    controladorCampoCPF.text = "123.456.789-0";
+    getDocumentById(user!.uid.toString());
+    final String? nome = user!.displayName.toString();
+
     return Scaffold(
       backgroundColor: Colors.blueGrey[900],
       appBar: AppBar(
@@ -31,7 +52,7 @@ class TelaPerfil extends StatelessWidget {
                 ),
                 SizedBox(width: 30),
                 Text(
-                  "Bom dia,\nUsuário!",
+                  "Bom dia,\n$nome!",
                   style: TextStyle(fontSize: 25),
                 ),
               ]),
@@ -65,7 +86,7 @@ class _Campo extends StatelessWidget {
   final TextEditingController controlador;
   final String label;
 
-  const _Campo({this.controlador, this.label});
+  const _Campo({required this.controlador, required this.label});
   @override
   Widget build(BuildContext context) {
     return Container(

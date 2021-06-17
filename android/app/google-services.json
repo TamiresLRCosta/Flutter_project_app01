@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "992701971610",
+    "project_id": "app-mf-tc-107",
+    "storage_bucket": "app-mf-tc-107.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:992701971610:android:decb08564ab3d039c57323",
+        "android_client_info": {
+          "package_name": "com.example.app_mf_tc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "992701971610-uuo440qq26bknqei1876eraa4ibfrovj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA87jnSwa-3N_SNb6xV2ck3LZsmkCblM_I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "992701971610-uuo440qq26bknqei1876eraa4ibfrovj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
